@@ -1,24 +1,22 @@
 import numpy as np
 import pandas as pd
 from numpy.linalg import cholesky
-from pepp_calculations import MultiAssetSimulation, print_summary
+from pepp_calculations import MultiAssetSimulation, print_summary, prepare_parameters_cholesky
 from simulation_methods import CholeskyMethod
 
 if __name__ == "__main__":
         
     #load data
-    data_path = 'data/synthetic_price_data.csv'
+    data_path = 'data/synthetic_price_data (1).csv'
     data = pd.read_csv(data_path, parse_dates=True, index_col='Date')
+    data_frequency = 'daily'  #dataset has daily frequency
 
     #basic setup
     n_assets = len(data.columns)
-    n_equity = 1
+    n_equity = 4
     returns = np.log(data / data.shift(1)).dropna()
-    mu = returns.mean()
-    sigma = returns.std()
-    cov_matrix = returns.cov()
-    L = cholesky(cov_matrix)
-    drift = mu - sigma**2 / 2  
+    mu, sigma, cov_matrix, L, drift = prepare_parameters_cholesky(returns, "daily")
+
     simulations = 25000
     contributions = 100
     s0 = 100
