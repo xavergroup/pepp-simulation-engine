@@ -1,17 +1,16 @@
 import numpy as np
-import os
 import pandas as pd
 from numpy.linalg import cholesky
-from pepp_calculations import MultiAssetSimulation
+from pepp_calculations import MultiAssetSimulation, print_summary
 from simulation_methods import CholeskyMethod
 
 if __name__ == "__main__":
         
-    # Load data
+    #load data
     data_path = 'data/synthetic_price_data.csv'
     data = pd.read_csv(data_path, parse_dates=True, index_col='Date')
 
-    # Basic setup
+    #basic setup
     n_assets = len(data.columns)
     n_equity = 1
     returns = np.log(data / data.shift(1)).dropna()
@@ -27,11 +26,10 @@ if __name__ == "__main__":
     initial_weights = [0.8, 0.2]
     final_weights = [0.6, 0.4]
 
-    # Inflation setup
+    #inflation setup
     inflation_path = 'data/synthetic_inflation.csv'
     inflation_df = pd.read_csv(inflation_path, index_col=0)
     inflation_df.index = inflation_df.index.astype(int)
-
 
     # ---------- Simulation for 10 Years ----------
     periods_10 = [10]
@@ -137,9 +135,9 @@ if __name__ == "__main__":
     )
     result_40y = simulator_40y.run_simulation()
 
-    # Optionally: Print summary of results
+    #print summary of results
     print("\nFinished all simulations.")
-    print("10Y Results:", result_10y)
-    print("20Y Results:", result_20y)
-    print("30Y Results:", result_30y)
-    print("40Y Results:", result_40y)
+    print_summary("10Y Results", result_10y)
+    print_summary("20Y Results", result_20y)
+    print_summary("30Y Results", result_30y)
+    print_summary("40Y Results", result_40y)
