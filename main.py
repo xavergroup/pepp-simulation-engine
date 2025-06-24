@@ -7,7 +7,7 @@ from simulation_methods import CholeskyMethod
 if __name__ == "__main__":
         
     #load data
-    data_path = 'data/synthetic_price_data (1).csv'
+    data_path = 'data/synthetic_price_data.csv'
     data = pd.read_csv(data_path, parse_dates=True, index_col='Date')
     data_frequency = 'daily'  #dataset has daily frequency
 

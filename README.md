@@ -24,7 +24,9 @@ pepp-simulation-engine/
 │   └── cholesky.py                    # Correlated return generation using Cholesky
 │
 ├── main.py                            # Entry point to configure and run simulation
-└── README.md                          # Project documentation (this file)
+├── README.md                          # Project documentation (this file)
+└── requirements.txt                   # Requirements file 
+
 ```
 
 ---
@@ -33,18 +35,19 @@ pepp-simulation-engine/
 
 - 📈 Simulates **multi-asset portfolios** using GBM dynamics
 - 🔁 Introduces asset correlation via **Cholesky decomposition**
-- 📊 Outputs inflation-adjusted and nominal wealth projections
-- 🧮 Calculates drawdown and performance metrics
+- 📊 Outputs inflation-adjusted wealth projections
+- 🧮 Calculates PEPP risk/reward metrics
 - 📁 Uses realistic synthetic price and inflation data
 
 ---
 
 ## 📥 Installation
 
-Install the required packages using pip:
+
+Install the required packages using the `requirements.txt` file:
 
 ```bash
-pip install numpy pandas matplotlib
+pip install -r requirements.txt
 ```
 
 ---
@@ -59,17 +62,11 @@ python main.py
 
 This will:
 1. Load historical price and inflation data from the `data/` folder.
-2. Estimate mean returns and volatility from log returns.
+2. Estimate parameters required for Cholesky decomposition.
 3. Simulate wealth evolution across thousands of Monte Carlo paths.
-4. Print and optionally save the results.
+4. Display the results.
 
 ---
-
-## Requirements
-pip install pipreqs
-pipreqs /path/to/project
-
-Will create requirements txt file with needed python packages
 
 ## 🔍 Key Modules
 
@@ -83,16 +80,13 @@ Computes and applies Cholesky decomposition to the covariance matrix to create c
 
 ### `risk_metrics.py`
 
-Calculates:
-- Final and inflation-adjusted portfolio value
-- Maximum drawdown
-- Average return and volatility
+Calculates the PEPP risk and reward metrics.
 
 ---
 
 ## 📊 Example Output
 
-- Final real and nominal portfolio values
+- Final portfolio values
 - Summary statistics printed to console
 - CSV export and visualizations can be added easily
 
