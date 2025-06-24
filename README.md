@@ -65,6 +65,12 @@ This will:
 
 ---
 
+## Requirements
+pip install pipreqs
+pipreqs /path/to/project
+
+Will create requirements txt file with needed python packages
+
 ## 🔍 Key Modules
 
 ### `multi_asset_simulation.py`
