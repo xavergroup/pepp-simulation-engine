@@ -46,6 +46,7 @@ Install the required packages using the `requirements.txt` file:
 
 ````bash
 pip install -r requirements.txt
+```
 
 
 ### Running in a virtual environment
