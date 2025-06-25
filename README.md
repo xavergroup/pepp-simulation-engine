@@ -1,4 +1,3 @@
-
 # PEPP Simulation Engine
 
 The **PEPP Simulation Engine** is a modular Python tool designed to simulate retirement wealth accumulation under the Pan-European Personal Pension Product (PEPP) framework. It uses **Geometric Brownian Motion (GBM)** to simulate asset returns and **Cholesky decomposition** to model correlations between assets.
@@ -25,7 +24,7 @@ pepp-simulation-engine/
 │
 ├── main.py                            # Entry point to configure and run simulation
 ├── README.md                          # Project documentation (this file)
-└── requirements.txt                   # Requirements file 
+└── requirements.txt                   # Requirements file
 
 ```
 
@@ -43,12 +42,21 @@ pepp-simulation-engine/
 
 ## 📥 Installation
 
-
 Install the required packages using the `requirements.txt` file:
 
-```bash
+````bash
 pip install -r requirements.txt
-```
+
+
+### Running in a virtual environment
+
+With just two standard dependencies (pandas and numpy), running in a virtual environment is not a must. In case you want to do anyway, we like [Astral's UV](https://docs.astral.sh.uv), which can be utilized like this (after [installation]()):
+
+```bash
+uv venv --python=3.12
+uv pip install -r requirements.txt
+source .venv/bin/activate
+````
 
 ---
 
@@ -61,6 +69,7 @@ python main.py
 ```
 
 This will:
+
 1. Load historical price and inflation data from the `data/` folder.
 2. Estimate parameters required for Cholesky decomposition.
 3. Simulate wealth evolution across thousands of Monte Carlo paths.
@@ -101,4 +110,3 @@ To customize the simulation (e.g., change the model, time horizon, weights, or c
 - To implement GARCH-based models, replace the GBM logic inside `multi_asset_simulation.py` and update parameter preparation accordingly.
 
 This structure is designed to make model substitution (e.g., replacing GBM with GJR-GARCH + copulas) straightforward and contained.
-
