@@ -48,14 +48,12 @@ Install the required packages using the `requirements.txt` file:
 pip install -r requirements.txt
 ```
 
-```
 
 
 ### Running in a virtual environment
 
 With just two standard dependencies (pandas and numpy), running in a virtual environment is not a must. In case you want to do anyway, we like [Astral's UV](https://docs.astral.sh.uv), which can be utilized like this (after [installation]()):
 
-```
 
 ```bash
 uv venv --python=3.12
